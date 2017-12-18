@@ -1,0 +1,16 @@
+{
+  "name": "dstools",
+  "version": "0.1.1",
+  "description": "Javascript tools and utilities for the data scientist",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elchanan Shor",
+  "license": "ISC",
+  "dependencies": {
+    "csv": "^2.0.0",
+    "jstat": "^1.7.1",
+    "underscore": "^1.8.3"
+  }
+}

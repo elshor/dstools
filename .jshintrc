@@ -1,0 +1,8 @@
+{
+	"undef": false,
+	"unused": false,
+	"node":true,
+	"globals": { "MY_GLOBAL": false },
+	"sub" : true,
+	"esnext":true
+}
