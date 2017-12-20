@@ -1,8 +1,10 @@
-const Collection = require('./collection');
+const Collection = require('..').Collection;
 const renderTable = require('./render-table');
 
 module.exports = function(options){
-	if(typeof this === 'object' && this.type === 'html'){
+	if(typeof this === 'number' || this instanceof Number){
+		showPlain(this.valueOf());
+	}else if(typeof this === 'object' && this.type === 'html'){
 		showHTML(this.data);
 	}else if(Array.isArray(this)){
 		showHTML(renderTable({
@@ -18,10 +20,11 @@ module.exports = function(options){
 
 function showHTML(html){
 	if(typeof global.$$ === 'undefined'){
-		//console.log(html);
-		require('fs').writeFileSync('/home/elshor/x.html',html);
-
+		console.info(html);
 	}else{
 		$$.html(html);
 	}
+}
+function showPlain(text){
+	console.info(text);
 }

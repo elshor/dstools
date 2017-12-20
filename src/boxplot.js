@@ -1,5 +1,5 @@
 const plotly = require('./plotly');
-const Collection = require('./collection');
+const Collection = require('..').Collection;
 
 module.exports = function(groupField,dataField){
 	return plotly.call(

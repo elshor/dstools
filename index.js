@@ -1,12 +1,17 @@
 let Wrapper = require('./src/wrapper');
+
+module.exports = {
+	Collection: Wrapper,
+	HTML : function(data){return  Wrapper({type:'html',data:data});},
+	Wrapper: Wrapper
+};
+
 registerFunction = Wrapper.registerFunction;
 registerFunction('loadCSV',require('./src/load-csv'));
 registerFunction('fields',require('./src/fields'));
-registerFunction('log',require('./src/log'));
 registerFunction('head',require('./src/head'));
 registerFunction('tail',require('./src/tail'));
 registerFunction('column',require('./src/column'));
-registerFunction('highcharts',require('./src/chart'));
 registerFunction('plotly',require('./src/plotly'));
 registerFunction('scatterPlot',require('./src/scatter-plot'));
 registerFunction('boxPlot',require('./src/boxplot'));
@@ -17,9 +22,20 @@ registerFunction('describe',require('./src/describe'));
 registerFunction('show',require('./src/show'));
 registerFunction('do',require('./src/do'));
 registerFunction('map',require('./src/map'));
+registerFunction('filterEqual',require('./src/filter-equal'));
 
-module.exports = {
-	Collection: Wrapper,
-	HTML : Wrapper,
-	Wrapper: Wrapper
-};
+function registerColumnFunction(name, func){
+	registerFunction(name,function(field,options){
+		let vec = Wrapper(this).column(typeof field === 'undefined'?'this':field).data();
+		let ret = func(vec,options);
+		return ret;
+	});
+}
+
+registerColumnFunction('count',require('./src/count'));
+
+const jStat = require('jstat');
+'sum,sumsqrd,sumsqerr,product,min,max,mean,meansqerr,geomean,median,cumsum,cumprod,diff,rank,range,variance,deviation,stdev,skewness,kurtosis,coeffvar,quartiles,quantiles,percentile'.split(',').forEach((name)=>{
+	registerColumnFunction(name,jStat[name]);
+});
+

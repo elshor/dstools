@@ -1,5 +1,5 @@
 const plotly = require('./plotly');
-const Collection = require('./collection');
+const Collection = require('..').Collection;
 const jStat = require('jstat');
 
 module.exports = function(){

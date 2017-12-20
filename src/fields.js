@@ -1,4 +1,4 @@
-const Collection = require('./collection');
+const Collection = require('..').Collection;
 
 module.exports = function(){
 	if(!Array.isArray(this)){

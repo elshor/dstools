@@ -1,7 +1,5 @@
 const _ = require('underscore');
 
-//TODO calculate column width
-
 module.exports = function(data,options){
 	return renderTableStart(data,options)+
 		renderHeader(data,options)+

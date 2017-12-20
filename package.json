@@ -4,13 +4,33 @@
   "description": "Javascript tools and utilities for the data scientist",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tap test/*.js"
   },
   "author": "Elchanan Shor",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
+    "axios": "^0.17.1",
     "csv": "^2.0.0",
     "jstat": "^1.7.1",
     "underscore": "^1.8.3"
-  }
+  },
+  "devDependencies": {
+    "tap": "^11.0.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elshor/dstools.git"
+  },
+  "keywords": [
+    "data-science",
+    "jupyter",
+    "notebook"
+  ],
+  "bugs": {
+    "url": "https://github.com/elshor/dstools/issues"
+  },
+  "homepage": "https://github.com/elshor/dstools#readme"
 }
