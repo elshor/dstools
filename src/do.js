@@ -1,3 +1,4 @@
 module.exports = function(func){
-	return func.call(this,this);
+	func.call(this,this);
+	return this;
 };

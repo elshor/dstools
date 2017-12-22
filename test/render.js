@@ -2,7 +2,7 @@ const t = require('tap');
 const ds = require('..');
 const Collection = ds.Collection;
 const HTML = ds.HTML;
-t.test('basic load',function(t){
+t.test('render html plots',function(t){
 	t.plan(7);
 	ds.Collection().loadCSV(__dirname + '/data1.csv').do((x)=>{
 		let boxPlotText = `[{"name":"a","y":[1,2,5],"type":"box"},{"name":"b","y":[1,4,6,7],"type":"box"},{"name":"c","y":[10],"type":"box"},{"name":"d","y":[11,12],"type":"box"}], {"xaxis":{"title":"field 1"},"yaxis":{"title":"field 2"},"title":"Box Plot"});`;
