@@ -50,7 +50,7 @@ t.test('basic load',function(t){
 		t.equal(ds.Wrapper({a:'I am an object'}).inspect(),'[Wrapper object]','inspect object');
 		t.equal(Collection(x).filterEqual('field 1','a').count().data(),3,'filterEqual');
 		t.equal(Collection(x).column((data)=>data['field 2']*2).sum().data(),118,'function as column');
-		Collection(Promise.resolve(Collection([1,2,3]))).sum().do((d)=>console.log('data is',d)||t.equal(d.valueOf(),6,'Execute a function on a promise that resolves to a wrapper'));
+		Collection(Promise.resolve(Collection([1,2,3]))).sum().do((d)=>t.equal(d.valueOf(),6,'Execute a function on a promise that resolves to a wrapper'));
 		t.equal(Collection([{a:1},4,{b:2}]).fields().data().join(),'a,b','fields functions with elements that are not objects');
 	});
 });
