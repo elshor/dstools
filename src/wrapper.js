@@ -40,7 +40,7 @@ class Wrapper{
 
 module.exports.registerFunction = function(name,func){
 	Wrapper.prototype[name] = function(){
-		return callFunction(func, this.data(),arguments,name);
+		return callFunction(func, this.data(),arguments,name,this);
 	};
 };
 function valueOf(x){
@@ -53,12 +53,12 @@ function valueOf(x){
 	}
 }
 
-function callFunction(func,data,args,name){
+function callFunction(func,data,args,name,thisObject){
 	if(isPromise(data)){
 		return module.exports(Promise.resolve(data).then((data)=>{
 			return callFunction(func,valueOf(data),args);
 		}).catch((e)=>{console.error(e);}));
 	}else{
-		return new Wrapper(func.apply(valueOf(data),args));
+		return new Wrapper(func.call(thisObject,valueOf(data),...args));
 	}
 }

@@ -2,8 +2,8 @@ const plotly = require('./plotly');
 const Collection = require('..').Collection;
 const jStat = require('jstat');
 
-module.exports = function(){
-	let data = Collection(this);
+module.exports = function(data){
+	data = Collection(data);
 	let fields=[], fields1 = data.fields().data();
 	let vectors=[], vectors1 = fields1.map((field)=>data.column(field).data());
 
@@ -23,7 +23,7 @@ module.exports = function(){
 		mtx.push(arr);
 	}
 	return plotly.call(
-		this,
+		data,
 		[{
 			z: mtx,
 			x: fields,

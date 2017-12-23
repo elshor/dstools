@@ -1,3 +1,3 @@
-module.exports = function(field,value){
-	return this.filter((row)=>row[field]===value);
+module.exports = function(data, field,value){
+	return data.filter((row)=>row[field]===value);
 };

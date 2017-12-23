@@ -1,3 +1,3 @@
-module.exports = function(num=5){
-	return this.slice(0,num);
+module.exports = function(data, num=5){
+	return data.slice(0,num);
 };

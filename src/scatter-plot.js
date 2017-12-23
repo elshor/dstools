@@ -1,8 +1,8 @@
 const plotly = require('./plotly');
 const Collection = require('..').Collection;
 
-module.exports = function(x,y){
-	return plotly.call(this,[{
+module.exports = function(data, x,y){
+	return plotly.call(data,[{
 		x: x,
 		y: y,
 		mode: 'markers',

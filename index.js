@@ -27,8 +27,8 @@ registerFunction('sort',require('./src/sort'));
 registerFunction('sortDesc',require('./src/sort-desc'));
 
 function registerColumnFunction(name, func){
-	registerFunction(name,function(field,options){
-		let vec = Wrapper(this).column(typeof field === 'undefined'?'this':field).data();
+	registerFunction(name,function(data,field,options){
+		let vec = Wrapper(data).column(typeof field === 'undefined'?'this':field).data();
 		let ret = func(vec,options);
 		return ret;
 	});

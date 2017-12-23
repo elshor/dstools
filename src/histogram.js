@@ -1,9 +1,9 @@
 const plotly = require('./plotly');
 const Collection = require('..').Collection;
 
-module.exports = function(field){
+module.exports = function(data, field){
 	return plotly.call(
-		this,
+		data,
 		[{type:'histogram',x:field}],
 		{title:'Histogram of ' + field,xaxis:{title:field}});
 };

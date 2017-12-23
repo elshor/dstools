@@ -1,21 +1,21 @@
 const Collection = require('..').Collection;
 const renderTable = require('./render-table');
 
-module.exports = function(options){
-	if(typeof this === 'number' || this instanceof Number){
-		showPlain(this.valueOf());
-	}else if(typeof this === 'object' && this.type === 'html'){
-		showHTML(this.data);
-	}else if(Array.isArray(this)){
+module.exports = function(data, options){
+	if(typeof data === 'number' || data instanceof Number){
+		showPlain(data.valueOf());
+	}else if(typeof data === 'object' && data.type === 'html'){
+		showHTML(data.data);
+	}else if(Array.isArray(data)){
 		showHTML(renderTable({
 			title: 'Table View',
-			columns: 	Collection(this).fields().map((field)=>({headerName:field, field:field})).data(),
-			rows: this
+			columns: 	Collection(data).fields().map((field)=>({headerName:field, field:field})).data(),
+			rows: data
 		},options));
 	}else{
-		console.info(this);
+		console.info(data);
 	}
-	return this;
+	return data;
 };
 
 function showHTML(html){

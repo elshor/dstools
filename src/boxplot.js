@@ -1,10 +1,10 @@
 const plotly = require('./plotly');
 const Collection = require('..').Collection;
 
-module.exports = function(groupField,dataField){
+module.exports = function(data, groupField,dataField){
 	return plotly.call(
-		this,
-		Collection(this).groupBy(groupField).data().map((group)=>({
+		data,
+		Collection(data).groupBy(groupField).data().map((group)=>({
 			name:group.key,
 			y: Collection(group.data).column(dataField).data(),
 			type: 'box'

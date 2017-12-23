@@ -1,9 +1,9 @@
 const Collection = require('..').Collection;
 const jStat = require('jstat').jStat;
 
-module.exports = function(field){
+module.exports = function(data, field){
 	console.assert(typeof field === 'string','Describe must specify a field name');
-	let vec = Collection(this).column(field).data();
+	let vec = Collection(data).column(field).data();
 	console.assert(Array.isArray(vec),'Describe function was called on an object that is not an array');
 	let quartiles = jStat.quartiles(vec);
 	return [

@@ -1,11 +1,11 @@
 const Collection = require('..').Collection;
 
-module.exports = function(){
-	if(!Array.isArray(this)){
+module.exports = function(data){
+	if(!Array.isArray(data)){
 		return Collection([]);
 	}else{
 		let obj = {};
-		this.forEach((elem)=>{
+		data.forEach((elem)=>{
 			if(typeof elem === 'object'){
 				for(let prop in elem){
 					obj[prop] = true;

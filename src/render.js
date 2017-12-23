@@ -1,8 +1,8 @@
 const Collection = require('..').Collection;
 
-module.exports = function(){
+module.exports = function(data){
 	let ret = '<table><tr>';
-	let columns = Collection(this).columns().data;
+	let columns = Collection(data).columns().data;
 	for(let i=0;i<columns.length;++i){
 		ret += `<th>${columns[i]}</th>`;
 	}

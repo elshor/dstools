@@ -6,7 +6,7 @@ const axios = require('axios');
 function isURL(url){
 	return url.match(/^(http|https)\:\/\//) !== null;
 }
-module.exports = function(path,options){
+module.exports = function(data,path,options){
 	let text = isURL(path)? 
 		axios.get(path,options).then((res)=>res.data) : 
 		fs.readFileSync(path);

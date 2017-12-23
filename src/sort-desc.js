@@ -1,6 +1,6 @@
-module.exports = function(byField){
+module.exports = function(data, byField){
 	//create ret array
-	let ret = Array.from(this);
+	let ret = Array.from(data);
 	let byFieldFunction;
 	if(typeof byField !== 'function'){
 		console.assert(typeof byField === 'string','sort argument should be comparing function or name of field');

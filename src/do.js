@@ -1,4 +1,4 @@
-module.exports = function(func){
-	func.call(this,this);
-	return this;
+module.exports = function(data, func){
+	func(data);
+	return data;
 };
