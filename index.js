@@ -24,6 +24,7 @@ registerFunction('describe',require('./src/describe'));
 registerFunction('show',require('./src/show'));
 registerFunction('do',require('./src/do'));
 registerFunction('map',require('./src/map'));
+registerFunction('filter',require('./src/filter'));
 registerFunction('filterEqual',require('./src/filter-equal'));
 registerFunction('sort',require('./src/sort'));
 registerFunction('sortDesc',require('./src/sort-desc'));
