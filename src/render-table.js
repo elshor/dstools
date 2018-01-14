@@ -1,12 +1,14 @@
 const _ = require('underscore');
+const HTML = require('..').HTML;
 
 module.exports = function(data,options){
-	return renderTableStart(data,options)+
+	return HTML(renderTableStart(data,options)+
 		renderHeader(data,options)+
 		'<tbody>' +
 		data.rows.map((row)=>renderRow(row,data.columns, options)).join('') +
 		'</tbody>' +
-		renderTableEnd(data,options);
+		renderTableEnd(data,options)
+							);
 };
 
 function renderTableStart(data, options){
@@ -26,7 +28,7 @@ function renderHeader(data,options){
 
 function renderRow(row,columns, options){
 	return `<tr class="table-row">`+
-		columns.map((column)=>`<td class="table-cell">${_.escape(row[column.field])}</td>`).join('')	+
+		columns.map((column)=>`<td class="table-cell">${typeof row[column.field] === 'object'?'':_.escape(row[column.field])}</td>`).join('')	+
 		`</tr>`;
 }
 

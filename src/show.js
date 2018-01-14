@@ -9,9 +9,9 @@ module.exports = function(data, options){
 	}else if(Array.isArray(data)){
 		showHTML(renderTable({
 			title: 'Table View',
-			columns: 	Collection(data).fields().map((field)=>({headerName:field, field:field})).data(),
+			columns: 	options.fields.map((field)=>({headerName:field, field:field})),
 			rows: data
-		},options));
+		},options).data().data);
 	}else{
 		console.info(data);
 	}

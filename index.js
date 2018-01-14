@@ -13,6 +13,7 @@ registerFunction('head',require('./src/head'));
 registerFunction('tail',require('./src/tail'));
 registerFunction('column',require('./src/column'));
 registerFunction('plotly',require('./src/plotly'));
+registerFunction('table',require('./src/render-table'));
 registerFunction('scatterPlot',require('./src/scatter-plot'));
 registerFunction('boxPlot',require('./src/boxplot'));
 registerFunction('histogram',require('./src/histogram'));

@@ -6,7 +6,8 @@ t.test('render html plots',function(t){
 	t.plan(7);
 	ds.Collection().loadCSV(__dirname + '/data1.csv').do((x)=>{
 		let boxPlotText = `[{"name":"a","y":[1,2,5],"type":"box"},{"name":"b","y":[1,4,6,7],"type":"box"},{"name":"c","y":[10],"type":"box"},{"name":"d","y":[11,12],"type":"box"}], {"xaxis":{"title":"field 1"},"yaxis":{"title":"field 2"},"title":"Box Plot"});`;
-		t.ok(Collection(x).boxPlot('field 1','field 2').data().data.includes(boxPlotText),'boxplot');
+		t.ok(Collection(x).boxPlot('field 1','field 2')
+				 .data().data.includes(boxPlotText),'boxplot');
 		
 		let corrmapText = `,[{"z":[[0.9999999999999999,0.9879609885780273,null],[0.9879609885780272,1.0000000000000002,null],[null,null,null]],"x":["id","field 2","field 3"],"y":["id","field 2","field 3"],"type":"heatmap"}], {"title":"Correlation Map"});`;
 		t.ok(Collection(x).corrmap().data().data.includes(corrmapText),'corrmap');
@@ -19,13 +20,13 @@ t.test('render html plots',function(t){
 			columns: 	Collection(x).fields().map((field)=>({headerName:field, field:field})).data(),
 			rows: x
 		});
-		t.ok(table.includes(tableText), 'renderTable');
+		t.ok(table.data().data.includes(tableText), 'renderTable');
 		table = require('../src/render-table')({
 			title:'my test title',
 			columns: 	Collection(x).fields().map((field)=>({headerName:field, field:field})).data(),
 			rows: x
 		});
-		t.ok(table.includes('my test title'), 'renderTable with title');
+		t.ok(table.data().data.includes('my test title'), 'renderTable with title');
 
 		let histogramText = `[{"type":"histogram","x":["a","b","a","b","a","b","b","c","d","d"]}], {"title":"Histogram of field 1","xaxis":{"title":"field 1"}});`;
 		t.ok(Collection(x).histogram('field 1').data().data.includes(histogramText),'histogram');
