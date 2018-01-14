@@ -1,3 +1,4 @@
+/* jshint -W053 */
 const t = require('tap');
 const ds = require('..');
 const Collection = ds.Collection;
