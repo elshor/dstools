@@ -62,7 +62,7 @@ The html function can be used to wrap html text. Subsequent calls of the `show` 
 * `describe(field)` - generate a table with key distribution measures such as average, stdev and quartiles
 * `count(field)` - count number of elements in a field, ignoring `null` and `undefined`
 * `plotly(data,options)` - Generate an HTML text displaying a plotly visualization. Consult [plotly](https://plot.ly/javascript/) documentation as reference.
-* `boxplot(groupField, dataField)` Generate a plotly boxplot.
+* `boxPlot(groupField, dataField)` Generate a plotly boxplot.
 * `corrmap()` - Generate a correlation map
 * `scatterPlot(fieldX,fieldY)` - generate a scatter plot with fieldX on the X axis and fieldY on the Y axis
 
