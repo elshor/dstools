@@ -26,6 +26,8 @@ registerFunction('map',require('./src/map'));
 registerFunction('filterEqual',require('./src/filter-equal'));
 registerFunction('sort',require('./src/sort'));
 registerFunction('sortDesc',require('./src/sort-desc'));
+registerFunction('toLowerCase',require('./src/to-lower-case'));
+registerFunction('save',require('./src/save'));
 
 function registerColumnFunction(name, func){
 	registerFunction(name,function(data,field,options){
