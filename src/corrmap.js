@@ -2,7 +2,7 @@ const plotly = require('./plotly');
 const Collection = require('..').Collection;
 const jStat = require('jstat');
 
-module.exports = function(data){
+module.exports = function(data, layout={}){
 	data = Collection(data);
 	let fields=[], fields1 = data.fields().data();
 	let vectors=[], vectors1 = fields1.map((field)=>data.column(field).data());
@@ -23,6 +23,7 @@ module.exports = function(data){
 		mtx.push(arr);
 	}
 	return plotly.call(
+		this,
 		data,
 		[{
 			z: mtx,
@@ -30,7 +31,7 @@ module.exports = function(data){
 			y: fields,
 			type: 'heatmap'
 		}],
-		{title:'Correlation Map'}
+		Object.assign({title:'Correlation Map'},layout)
 	);
 };
 
