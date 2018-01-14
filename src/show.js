@@ -1,7 +1,8 @@
 const Collection = require('..').Collection;
 const renderTable = require('./render-table');
 
-module.exports = function(data, options){
+module.exports = function(data, options={}){
+	options.fields = options.fields || Collection(data).fields().data();
 	if(typeof data === 'number' || data instanceof Number){
 		showPlain(data.valueOf());
 	}else if(typeof data === 'object' && data.type === 'html'){
