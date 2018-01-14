@@ -29,6 +29,7 @@ registerFunction('sortDesc',require('./src/sort-desc'));
 registerFunction('toLowerCase',require('./src/to-lower-case'));
 registerFunction('save',require('./src/save'));
 registerFunction('dropStopwords',require('./src/drop-stopwords'));
+registerFunction('wordCloud',require('./src/wordcloud'));
 
 function registerColumnFunction(name, func){
 	registerFunction(name,function(data,field,options){
