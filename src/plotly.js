@@ -36,7 +36,7 @@ function render(data,layout){
 			s.src = '${CDN_SOURCE}';
 			s.type = 'text/javascript';
 			s.async = false;
-			s.onreadystatechange = s.onload = plot;
+			s.onreadystatechange = s.onload = plot${timestamp};
 			head.appendChild(s);
 		}else{
 			require(['${CDN_SOURCE}'], function(Plotly){
