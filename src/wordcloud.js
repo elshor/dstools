@@ -3,9 +3,11 @@ const Collection = require('..').Collection;
 
 /**
  * Show a word cloud of terms
- * @param   {[[Type]]} text    [[Description]]
- * @param   {object}   options [[Description]]
- * @returns {[[Type]]} [[Description]]
+ * @alias wordCloud
+ * @param   {string} termField  The field with the term label
+ * @param   {string} valueField The field with the term measure - determining the size of the label
+ * @param   {object} options    Additional layout configuration for the highchart API
+ * @returns {HTML}   an HTML wrapper
  */
 module.exports = function(data,termField, valueField,options={}){
 	options.title = {text:options.title || "Word Cloud"};

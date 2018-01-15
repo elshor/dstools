@@ -10,6 +10,7 @@ registerFunction = Wrapper.registerFunction;
 registerFunction('loadCSV',require('./src/load-csv'));
 registerFunction('load',require('./src/load'));
 registerFunction('fields',require('./src/fields'));
+registerFunction('addField',require('./src/add-field'));
 registerFunction('head',require('./src/head'));
 registerFunction('tail',require('./src/tail'));
 registerFunction('column',require('./src/column'));
