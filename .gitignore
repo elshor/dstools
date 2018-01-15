@@ -8,4 +8,5 @@ test2.js
 test3.js
 package-lock.json
 tasks.json
-
+/future/
+temp*
