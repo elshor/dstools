@@ -32,6 +32,7 @@ registerFunction('sort',require('./src/sort'));
 registerFunction('sortDesc',require('./src/sort-desc'));
 registerFunction('toLowerCase',require('./src/to-lower-case'));
 registerFunction('save',require('./src/save'));
+registerFunction('highcharts',require('./src/highcharts'));
 registerFunction('dropStopwords',require('./src/drop-stopwords'));
 registerFunction('wordCloud',require('./src/wordcloud'));
 
