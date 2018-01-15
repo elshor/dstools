@@ -11,9 +11,11 @@
   "dependencies": {
     "axios": "^0.17.1",
     "csv": "^2.0.0",
+    "fs-extra": "^5.0.0",
     "jstat": "^1.7.1",
+    "natural": "^0.5.4",
     "underscore": "^1.8.3"
-  },
+	},
   "devDependencies": {
     "tap": "^11.0.0"
   },
