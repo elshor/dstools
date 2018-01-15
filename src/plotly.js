@@ -2,10 +2,10 @@ const HTML = require('..').HTML;
 const Collection = require('..').Collection;
 const CDN_SOURCE = 'https://cdn.plot.ly/plotly-latest.min.js';
 
-module.exports = function(data,layout){
+module.exports = function(collection, data,layout){
 	for(let i=0;i<data.length;++i){
-		assignArray(this,data[i].x,data[i],'x');
-		assignArray(this,data[i].y,data[i],'y');
+		assignArray(collection,data[i].x,data[i],'x');
+		assignArray(collection,data[i].y,data[i],'y');
 	}
 
 	return HTML(render(data,layout));
