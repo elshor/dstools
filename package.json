@@ -1,6 +1,6 @@
 {
   "name": "dstools",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "Javascript tools and utilities for the data scientist",
   "main": "index.js",
   "scripts": {
