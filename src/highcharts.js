@@ -5,8 +5,8 @@ const Collection = require('..').Collection;
 /**
  * Create HTML of a highchart diagram. If the series data property is a string then treat the string as a column name and load the column from this data collection
  * @alias highcharts
- * @param   {object}  options the options object to pass to the highchart function.
- * @returns {[[Type]]} [[Description]]
+ * @param   {object} options the options object to pass to the highchart function.
+ * @returns {HTML}   HTML wrapper
  */
 module.exports = function(data, options){
 	//go over options and fill in the data, if needed
