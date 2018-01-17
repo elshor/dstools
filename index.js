@@ -35,6 +35,8 @@ registerFunction('save',require('./src/save'));
 registerFunction('highcharts',require('./src/highcharts'));
 registerFunction('dropStopwords',require('./src/drop-stopwords'));
 registerFunction('wordCloud',require('./src/wordcloud'));
+registerFunction('terms',require('./src/terms'));
+registerFunction('merge',require('./src/merge'));
 
 function registerColumnFunction(name, func){
 	registerFunction(name,function(data,field,options){
