@@ -3,7 +3,7 @@ const ds = require('..');
 const Collection = ds.Collection;
 const HTML = ds.HTML;
 t.test('render html plots',function(t){
-	t.plan(9);
+	t.plan(10);
 	ds.Collection().loadCSV(__dirname + '/data1.csv').do((x)=>{
 		let boxPlotText = `[{"name":"a","y":[1,2,5],"type":"box"},{"name":"b","y":[1,4,6,7],"type":"box"},{"name":"c","y":[10],"type":"box"},{"name":"d","y":[11,12],"type":"box"}], {"xaxis":{"title":"field 1"},"yaxis":{"title":"field 2"},"title":"Box Plot"});`;
 		t.ok(Collection(x).boxPlot('field 1','field 2')
@@ -19,6 +19,7 @@ t.test('render html plots',function(t){
 		
 		let wordcloudText = '{"title":{"text":"test title"},"series":[{"name":"value","type":"wordcloud","data":[{"name":"one","weight":1},{"name":"two","weight":2},{"name":"three","weight":3}]}]})}';
 		
+		let highcartsText = `{"title":{"text":"highcharts diagram"},"series":[{"name":"first","data":[1,1,2,4,5,6,7,10,11,12]},{"name":"second","data":[10,10,10,10,10,10,10,10,10,10]}]})}`;
 		let table = require('../src/render-table')({
 			columns: 	Collection(x).fields().map((field)=>({headerName:field, field:field})).data(),
 			rows: x
@@ -48,5 +49,11 @@ t.test('render html plots',function(t){
 			{label:'three',value:3}
 		]).wordCloud('label','value').data().data.includes(
 			wordcloudText.replace('test title','Word Cloud')));
+		
+		t.ok(Collection(x).highcharts({
+			title: {text: 'highcharts diagram'},
+			series: [{name:'first',data:'field 2'},{name:'second',data:'field 3'}]
+		}).data().data.includes(highcartsText),'highcharts diagram');
 	});
+
 });

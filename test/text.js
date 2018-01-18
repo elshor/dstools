@@ -16,6 +16,7 @@ t.test('text functions',(t)=>{
 	t.equals(Collection('Upper').toLowerCase().data(),'upper','toLowerCase - input is string');
 	t.equals(Collection(['Upper','Case']).toLowerCase().data()[1],'case','toLowerCase - input is an array');
 	t.equals(Collection(['Upper',4]).toLowerCase().data()[1],4,'toLowerCase - input is not a string - just pass the input object - do nothing');
-	
+	t.equals(Collection(['a','b']).merge().data(),'a\nb','simple merge using default sep');
+	t.equals(Collection(['a','b']).merge({sep:'-'}).data(),'a-b','merge using sep');
 	t.end();
 });
