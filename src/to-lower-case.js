@@ -1,5 +1,6 @@
 /**
  * changes strings into lower case. If the data input is an array, map all its elements using toLowerCase. If it is not an array and not a string, just return the input data without any transformation
+ * @alias toLowerCase
  * @param   {string|Array} data input
  * @returns {string|Array}     [[Description]]
  */

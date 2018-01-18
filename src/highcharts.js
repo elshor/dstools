@@ -3,7 +3,7 @@ const HTML = require('..').HTML;
 const Collection = require('..').Collection;
 
 /**
- * Create HTML of a highchart diagram. If the series data property is a string then treat the string as a column name and load the column from this data collection
+ * Create HTML of a highchart diagram. If the series data property is a string then treat the string as a column name and load the column from this data collection. For the options argument consult with {@link https://www.highcharts.com/docs highcharts documentation}}
  * @alias highcharts
  * @param   {object} options the options object to pass to the highchart function.
  * @returns {HTML}   HTML wrapper

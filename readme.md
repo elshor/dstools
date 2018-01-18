@@ -48,6 +48,17 @@ console.log(data.data());
 ```
 The html function can be used to wrap html text. Subsequent calls of the `show` function will display the html in the Jupyter notebook.
 
+Here is a more elaborate example taken from a [medium post](https://medium.com/@elshor/learning-to-talk-about-wine-using-javascript-7b59d0e0a0f):
+```js
+const Collection = require('dstools').Collection;
+Collection()
+.loadCSV('/home/elshor/data/winemag-data-130k-v2.csv')//load the data
+.terms({field:'description'}).dropStopwords('term')
+.sortDesc('count').head(50)
+.wordCloud('term','count')//arguments are label and measure
+.show();//show the wordcloud in Jupyter notebook
+```
+
 ## Function Reference
 * `loadCSV(path, options)` - load a csv file from file system or web. First argument is path to file or url of file. Second argument is options for csv load function as documented [here](http://csv.adaltas.com/parse/)
 * `show()` - display a data collection as an HTML table or a visualization as HTML. When executed from within Jupyter notebook using the IJavascript kernel, displays the object in the notebook. Otherwise, prints the HTML to the standard output

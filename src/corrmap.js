@@ -2,6 +2,12 @@ const plotly = require('./plotly');
 const Collection = require('..').Collection;
 const jStat = require('jstat');
 
+/**
+ * generate a correlation matrix using plotly heat maps. This visualization can be used to easily evaluate the correlation between several fields. It takes all numerical fields in the data collection and checks the correlation between each field and all other fields.
+ * @alias corrmap
+ * @param   {object} layout additional layout properties, passed on to the plotly function
+ * @returns {HTML}   HTML wrapper of the generated diagram
+ */
 module.exports = function(data, layout={}){
 	data = Collection(data);
 	let fields=[], fields1 = data.fields().data();

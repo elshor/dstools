@@ -1,5 +1,6 @@
 /**
- * Filter all data elements where their field equal value or included in value array
+ * Filter all data elements where their field value equals value or is included in value array
+ * @alias filterEqual
  * @param   {Collection}      data  input collection
  * @param   {string}          field field name
  * @param   {Object|Object[]} value value to select or an array of possible values

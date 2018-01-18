@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Dstools - Data Science Tools for Javascript</h1><p>dstools is a collection of tools that assist in analyzing and visualizing data using Javascript code inside Jupyter notebooks. Its main features are:</p>
+<ul>
+<li>All functions are chainable (jQuery style)</li>
+<li>Import csv data files from the web or file system (using <code>csv</code> package)</li>
+<li>Statistical analysis using jStat package</li>
+<li>Show data as tables within Jupyter notebooks</li>
+<li>Visualize data using plotly javascript library within Jupyter notebooks</li>
+</ul>
+<h2>Installing dstools</h2><p>Install dstools using npm</p>
+<pre class="prettyprint source lang-bash"><code>npm install dstools</code></pre><p>When using dstools from Jupyter notebooks with the IJavascript kernel, the package should be installed in the same directory as the notebook.</p>
+<h2>Getting Started</h2><p>First step in handling data is usually loading the data</p>
+<pre class="prettyprint source lang-js"><code>const Collection = require('dstools').Collection;
+const data = Collection().loadCSV('data.csv');</code></pre><p>Alternatively, the data can be wrapped using the Collection function:</p>
+<pre class="prettyprint source lang-js"><code>const data = Collection([{field1:2,field2:4},{field1:3,field2:5}]);</code></pre><p>inside the Jupyter notebook, the data can be displayed as a table using the <code>show</code> function.</p>
+<pre class="prettyprint source lang-js"><code>data.show();</code></pre><p>The data will be displayed as an HTML table.</p>
+<p>Visualizations are possible using the various visualization functions.</p>
+<pre class="prettyprint source lang-js"><code>data.histogram('field1').show();</code></pre><p>When the code is executed inside a Jupyter notebook, it will display a histogram using the plotly javascript library.</p>
+<p>The <code>data</code> function can be used to get the underlying data</p>
+<pre class="prettyprint source lang-js"><code>console.log(data.data());</code></pre><p>The html function can be used to wrap html text. Subsequent calls of the <code>show</code> function will display the html in the Jupyter notebook.</p>
+<p>Here is a more elaborate example taken from a <a href="https://medium.com/@elshor/learning-to-talk-about-wine-using-javascript-7b59d0e0a0f">medium post</a>:</p>
+<pre class="prettyprint source lang-js"><code>const Collection = require('dstools').Collection;
+Collection()
+.loadCSV('/home/elshor/data/winemag-data-130k-v2.csv')//load the data
+.terms({field:'description'}).dropStopwords('term')
+.sortDesc('count').head(50)
+.wordCloud('term','count')//arguments are label and measure
+.show();//show the wordcloud in Jupyter notebook</code></pre><h2>Function Reference</h2><ul>
+<li><code>loadCSV(path, options)</code> - load a csv file from file system or web. First argument is path to file or url of file. Second argument is options for csv load function as documented <a href="http://csv.adaltas.com/parse/">here</a></li>
+<li><code>show()</code> - display a data collection as an HTML table or a visualization as HTML. When executed from within Jupyter notebook using the IJavascript kernel, displays the object in the notebook. Otherwise, prints the HTML to the standard output</li>
+<li><code>do(function(data){})</code> - executes a function. the function takes as its argument the underlying data</li>
+<li><code>column(field)</code> - extract a column from the data. First argument is property name or a function that takes the data object as input and returns the vector item value. Function returns an array of values. First argument can also be a vector of field definitions (field name or function). In this case, the return value will be an array of arrays</li>
+<li><code>fields()</code> - list of fields of the underlying data</li>
+<li><code>map(function(data))</code> - Similar to array map function</li>
+<li><code>head(n)</code> - return the first n elements in the collection. Default to 5</li>
+<li><code>tail(n)</code> - return the last n elements in the collection. Default to 5</li>
+<li><code>groupBy(field)</code> - group all data element by a specific field. The response is an array of groups - each one in the format <code>{key:groupFieldName,data:[1,2,3]}</code></li>
+<li><code>filterEqual(field,value)</code> - filter data elements leaving all elements where field=value</li>
+<li><code>describe(field)</code> - generate a table with key distribution measures such as average, stdev and quartiles</li>
+<li><code>count(field)</code> - count number of elements in a field, ignoring <code>null</code> and <code>undefined</code></li>
+<li><code>plotly(data,options)</code> - Generate an HTML text displaying a plotly visualization. Consult <a href="https://plot.ly/javascript/">plotly</a> documentation as reference.</li>
+<li><code>boxPlot(groupField, dataField)</code> Generate a plotly boxplot.</li>
+<li><code>corrmap()</code> - Generate a correlation map</li>
+<li><code>scatterPlot(fieldX,fieldY)</code> - generate a scatter plot with fieldX on the X axis and fieldY on the Y axis</li>
+</ul>
+<h2>Additional Statistical Functions</h2><p>The following jStat functions take as argument the field name and return the jStat function with the column vector as its argument. The following functions are supported: <code>sum,sumsqrd,sumsqerr,product,min,max,mean,meansqerr,geomean,median,cumsum,cumprod,diff,rank,range,variance,deviation,stdev,skewness,kurtosis,coeffvar,quartiles,quantiles,percentile</code>. Consult the <a href="https://jstat.github.io/all.html">jStat</a> documentation for details.</p>
+<h2>License</h2><p>Dstools is licensed under the MIT License</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addField">addField</a></li><li><a href="global.html#boxPlot">boxPlot</a></li><li><a href="global.html#column">column</a></li><li><a href="global.html#corrmap">corrmap</a></li><li><a href="global.html#count">count</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#do">do</a></li><li><a href="global.html#dropEqual">dropEqual</a></li><li><a href="global.html#dropStopwords">dropStopwords</a></li><li><a href="global.html#fields">fields</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#filterEqual">filterEqual</a></li><li><a href="global.html#groupBy">groupBy</a></li><li><a href="global.html#guessEnv">guessEnv</a></li><li><a href="global.html#head">head</a></li><li><a href="global.html#highcharts">highcharts</a></li><li><a href="global.html#histogram">histogram</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#loadCSV">loadCSV</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#merge">merge</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#tail">tail</a></li><li><a href="global.html#wordCloud">wordCloud</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Jan 18 2018 10:55:26 GMT+0200 (IST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
