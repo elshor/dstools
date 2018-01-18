@@ -16,9 +16,9 @@ const defaultOptions = {
  * <li>tfidf
  * <li>idf
  * <li>entropy
- * @param   {string|Collection} text    [[Description]]
- * @param   {object}   options [[Description]]
- * @returns {Collection} Collection of terms with the term label in property term
+ * @alias terms
+ * @param   {string|number|function} options.field Field of text property to extract terms from. Default is 'this' assuming the data objects are strings
+ * @returns {Collection}             Collection of terms with the term label in property term
  */
 module.exports = function(text,options){
 	//normalize options
