@@ -60,23 +60,7 @@ Collection()
 ```
 
 ## Function Reference
-* `loadCSV(path, options)` - load a csv file from file system or web. First argument is path to file or url of file. Second argument is options for csv load function as documented [here](http://csv.adaltas.com/parse/)
-* `show()` - display a data collection as an HTML table or a visualization as HTML. When executed from within Jupyter notebook using the IJavascript kernel, displays the object in the notebook. Otherwise, prints the HTML to the standard output
-* `do(function(data){})` - executes a function. the function takes as its argument the underlying data
-* `column(field)` - extract a column from the data. First argument is property name or a function that takes the data object as input and returns the vector item value. Function returns an array of values. First argument can also be a vector of field definitions (field name or function). In this case, the return value will be an array of arrays
-* `fields()` - list of fields of the underlying data
-* `map(function(data))` - Similar to array map function
-* `head(n)` - return the first n elements in the collection. Default to 5
-* `tail(n)` - return the last n elements in the collection. Default to 5
-* `groupBy(field)` - group all data element by a specific field. The response is an array of groups - each one in the format `{key:groupFieldName,data:[1,2,3]}`
-* `filterEqual(field,value)` - filter data elements leaving all elements where field=value
-* `describe(field)` - generate a table with key distribution measures such as average, stdev and quartiles
-* `count(field)` - count number of elements in a field, ignoring `null` and `undefined`
-* `plotly(data,options)` - Generate an HTML text displaying a plotly visualization. Consult [plotly](https://plot.ly/javascript/) documentation as reference.
-* `boxPlot(groupField, dataField)` Generate a plotly boxplot.
-* `corrmap()` - Generate a correlation map
-* `scatterPlot(fieldX,fieldY)` - generate a scatter plot with fieldX on the X axis and fieldY on the Y axis
-
+Function reference and jsdoc based documentation can be found at https://elshor.github.io/dstools/
 ## Additional Statistical Functions
 The following jStat functions take as argument the field name and return the jStat function with the column vector as its argument. The following functions are supported: `sum,sumsqrd,sumsqerr,product,min,max,mean,meansqerr,geomean,median,cumsum,cumprod,diff,rank,range,variance,deviation,stdev,skewness,kurtosis,coeffvar,quartiles,quantiles,percentile`. Consult the [jStat](https://jstat.github.io/all.html) documentation for details.
 
