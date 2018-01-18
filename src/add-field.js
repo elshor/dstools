@@ -21,6 +21,10 @@ module.exports = function(collection, field, value){
 			return Object.assign({},record,fieldObject);
 		});
 	}else{
-		throw new Error('addField second argument must be an array of values or a function');
+		return collection.map((record,index)=>{
+			let fieldObject = {};
+			fieldObject[field] = value;
+			return Object.assign({},record,fieldObject);
+		});
 	}
 };
