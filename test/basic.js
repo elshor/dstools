@@ -17,7 +17,7 @@ function startServer(port){
 startServer(PORT);
 
 t.test('basic load',function(t){
-	t.plan(27);
+	t.plan(37);
 	ds.Collection().loadCSV('http://localhost:'+PORT).do((x)=>{
 		t.equal(x.length,10,'load csv from url');
 		server.close();
@@ -50,9 +50,34 @@ t.test('basic load',function(t){
 		t.equal(Collection(x).inspect(),'[Wrapper collection]','inspect collection');
 		t.equal(ds.Wrapper({a:'I am an object'}).inspect(),'[Wrapper object]','inspect object');
 		t.equal(Collection(x).filterEqual('field 1','a').count().data(),3,'filterEqual');
+		t.equal(Collection(x).filterEqual('field 1',['a','b']).count().data(),7,
+						'filterEqual - value is an array');
+		t.equal(Collection(x).filter((data)=>data['field 1']==='a').count().data(),3,'filter using a function');
+		
 		t.equal(Collection(x).column((data)=>data['field 2']*2).sum().data(),118,'function as column');
 		Collection(Promise.resolve(Collection([1,2,3]))).sum().do((d)=>t.equal(d.valueOf(),6,'Execute a function on a promise that resolves to a wrapper'));
 		t.equal(Collection([{a:1},4,{b:2}]).fields().data().join(),'a,b','fields functions with elements that are not objects');
+		
+		Collection(x).addField('additional',[1,2,3,4,5,6,7,8,9,10])
+			.do((data)=>t.equal(data[9].additional,10,'addField by array'));
+		Collection(x).addField('additional',(input)=>input.id*2)
+			.do((data)=>t.equal(data[9].additional,20,'addField by function'));
+		Collection(x).addField('additional',613)
+			.do((data)=>t.equal(data[4].additional,613,'addField when value is not function or array'));
+		
+		t.equal(Collection(x).dropEqual('field 2',1).count().data(),8,'dropEqual single value');
+		t.equal(Collection(x).dropEqual('field 2',[1,2]).count().data(),7,'dropEqual several values');
+		
+		Collection(x).groupBy('field 1',{
+			count:(data)=>data.length,
+			count2:(data)=>Collection(data).count()
+		})
+		.do((data)=>{
+			t.equal(data.length,4,'groupBy - count number of groups created');
+			t.equal(data[0].count,3,'groupBy - group function count');
+			t.equal(data[0].count2,3,'groupby - group function count2 when returning a wrapper');
+		});
+		
 	});
 });
 
