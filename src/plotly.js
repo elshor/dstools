@@ -2,6 +2,14 @@ const HTML = require('..').HTML;
 const Collection = require('..').Collection;
 const CDN_SOURCE = 'https://cdn.plot.ly/plotly-latest.min.js';
 
+/**
+ * Generate HTML for display of ${@link https://plot.ly/javascript/ plotly.js}
+ * diagrams. When the properties of the data elements are either x or y, and their value is of type string, the function treats them as field names and replaces the field name with the data column, using the column function.
+ * @alias plotly
+ * @param   {Array}  data   An array of data objects. 
+ * @param   {object} layout A layout options object passed to the plotly function
+ * @returns {HTML}   HTML wrapper of the generated HTML code
+ */
 module.exports = function(collection, data,layout){
 	for(let i=0;i<data.length;++i){
 		assignArray(collection,data[i].x,data[i],'x');
