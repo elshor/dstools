@@ -37,6 +37,7 @@ registerFunction('dropStopwords',require('./src/drop-stopwords'));
 registerFunction('wordCloud',require('./src/wordcloud'));
 registerFunction('terms',require('./src/terms'));
 registerFunction('merge',require('./src/merge'));
+registerFunction('add',require('./src/add'));
 
 function registerColumnFunction(name, func){
 	registerFunction(name,function(data,field,options){
@@ -52,4 +53,3 @@ const jStat = require('jstat');
 'sum,sumsqrd,sumsqerr,product,min,max,mean,meansqerr,geomean,median,cumsum,cumprod,diff,rank,range,variance,deviation,stdev,skewness,kurtosis,coeffvar,quartiles,quantiles,percentile'.split(',').forEach((name)=>{
 	registerColumnFunction(name,jStat[name]);
 });
-

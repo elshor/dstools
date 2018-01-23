@@ -17,7 +17,7 @@ function startServer(port){
 startServer(PORT);
 
 t.test('basic load',function(t){
-	t.plan(37);
+	t.plan(40);
 	ds.Collection().loadCSV('http://localhost:'+PORT).do((x)=>{
 		t.equal(x.length,10,'load csv from url');
 		server.close();
@@ -76,6 +76,11 @@ t.test('basic load',function(t){
 			t.equal(data.length,4,'groupBy - count number of groups created');
 			t.equal(data[0].count,3,'groupBy - group function count');
 			t.equal(data[0].count2,3,'groupby - group function count2 when returning a wrapper');
+			
+			//add
+			t.equal(Collection([1,2]).add(3).count().data(),3,'add element');
+			t.equal(Collection([1,2]).add([3,4]).count().data(),4,'add array of elements');
+			t.equal(Collection({a:'element'}).add({a:'second'}).count().data(),2,'add element to non-array');
 		});
 		
 	});
