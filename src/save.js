@@ -6,10 +6,11 @@ const fs = require('fs-extra');
  * @returns {Collection} The input data
  */
 module.exports = function(data,path){
+	console.assert(typeof data !== undefined,'Cannot save undefined');
 	if(data.type && data.type === 'html'){
 		return fs.outputFile(path,data.data).then(()=>this);
 	}else if(typeof data === 'string'){
-		return fs.outputFile(path,data);
+		return fs.outputFile(path,data).then(()=>this);
 	}else{
 		return fs.outputJson(path,data).then(()=>this);
 	}
