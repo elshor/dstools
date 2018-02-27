@@ -1,4 +1,4 @@
-const sw = require('natural').stopwords;
+const sw = require('stopwords').english;
 const Collection = require('..').Collection;
 
 /**
