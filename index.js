@@ -21,6 +21,7 @@ registerFunction('boxPlot',require('./src/boxplot'));
 registerFunction('histogram',require('./src/histogram'));
 registerFunction('corrmap',require('./src/corrmap'));
 registerFunction('groupBy',require('./src/group-by'));
+registerFunction('get',require('./src/get'));
 registerFunction('describe',require('./src/describe'));
 registerFunction('show',require('./src/show'));
 registerFunction('do',require('./src/do'));
