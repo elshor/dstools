@@ -1,7 +1,7 @@
-const natural = require('natural');
-const tokenizer = new natural.WordTokenizer();
 const ALL='\x01';
 const getFieldFunction = require('./utils').getFieldFunction;
+const re=`https?\\:\\/\\/\\S+|[0-9]*\\.[0-9]+|[0-9]+|(\\p{L}|[0-9])+`;
+const TOKEN_REGEX = require("xregexp")(re,'g');
 const defaultOptions = {
 	field: 'this',
 	groupBy:null,
@@ -106,7 +106,7 @@ module.exports = function(text,options){
 };
 
 function updateCounts(text,groupBy,counts){
-	let tokens = tokenizer.tokenize(text);
+	let tokens = text.match(TOKEN_REGEX);
 	
 	//update counts
 	tokens.forEach((token)=>{
