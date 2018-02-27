@@ -40,6 +40,7 @@ registerFunction('wordCloud',require('./src/wordcloud'));
 registerFunction('terms',require('./src/terms'));
 registerFunction('merge',require('./src/merge'));
 registerFunction('spread',require('./src/spread'));
+registerFunction('context',require('./src/context'));
 registerFunction('add',require('./src/add'));
 registerFunction('collection',require('./src/collection'));
 
