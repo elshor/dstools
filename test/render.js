@@ -3,7 +3,7 @@ const ds = require('..');
 const Collection = ds.Collection;
 const HTML = ds.HTML;
 t.test('render html plots',function(t){
-	t.plan(10);
+	t.plan(11);
 	ds.Collection().loadCSV(__dirname + '/data1.csv').do((x)=>{
 		let boxPlotText = `[{"name":"a","y":[1,2,5],"type":"box"},{"name":"b","y":[1,4,6,7],"type":"box"},{"name":"c","y":[10],"type":"box"},{"name":"d","y":[11,12],"type":"box"}], {"xaxis":{"title":"field 1"},"yaxis":{"title":"field 2"},"title":"Box Plot"});`;
 		t.ok(Collection(x).boxPlot('field 1','field 2')
@@ -54,6 +54,10 @@ t.test('render html plots',function(t){
 			title: {text: 'highcharts diagram'},
 			series: [{name:'first',data:'field 2'},{name:'second',data:'field 3'}]
 		}).data().data.includes(highcartsText),'highcharts diagram');
+		
+		let boxplotBinsText = `[{"name":"< 4","y":[1,1,2],"type":"box"},{"name":"4-6","y":[4,5],"type":"box"},{"name":">= 6","y":[6,7,10,11,12],"type":"box"}]`;
+		t.ok(Collection(x).boxPlot('id','field 2',{bins:[4,6]})
+				 .data().data.includes(boxplotBinsText),'boxplot with bins');
 	});
 
 });
