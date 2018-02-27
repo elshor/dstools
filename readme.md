@@ -8,8 +8,7 @@ dstools is a collection of tools that assist in analyzing and visualizing data u
 * Show data as tables within Jupyter notebooks
 * Visualize data using plotly javascript library within Jupyter notebooks
 
-Installing dstools
--------------------
+## Installing dstools
 Install dstools using npm
 
 ```bash
