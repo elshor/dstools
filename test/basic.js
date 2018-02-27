@@ -17,7 +17,7 @@ function startServer(port){
 startServer(PORT);
 
 t.test('basic load',function(t){
-	t.plan(40);
+	t.plan(42);
 	ds.Collection().loadCSV('http://localhost:'+PORT).do((x)=>{
 		t.equal(x.length,10,'load csv from url');
 		server.close();
@@ -81,6 +81,10 @@ t.test('basic load',function(t){
 			t.equal(Collection([1,2]).add(3).count().data(),3,'add element');
 			t.equal(Collection([1,2]).add([3,4]).count().data(),4,'add array of elements');
 			t.equal(Collection({a:'element'}).add({a:'second'}).count().data(),2,'add element to non-array');
+			
+			//get
+			t.equal(Collection(x).get(2,'id').id,2,'get with explicit key');
+			t.equal(Collection(x).context('key','id').get(3).id,3,'get with context defined key');
 		});
 		
 	});
