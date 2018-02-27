@@ -14,6 +14,7 @@ module.exports = function(collection, data,layout){
 	for(let i=0;i<data.length;++i){
 		assignArray(collection,data[i].x,data[i],'x');
 		assignArray(collection,data[i].y,data[i],'y');
+		assignArray(collection,data[i].z,data[i],'z');
 	}
 
 	return HTML(render(data,layout));
