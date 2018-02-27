@@ -25,6 +25,7 @@ registerFunction('describe',require('./src/describe'));
 registerFunction('show',require('./src/show'));
 registerFunction('do',require('./src/do'));
 registerFunction('map',require('./src/map'));
+registerFunction('forEach',require('./src/for-each'));
 registerFunction('filter',require('./src/filter'));
 registerFunction('filterEqual',require('./src/filter-equal'));
 registerFunction('drop',require('./src/drop'));
