@@ -3,7 +3,9 @@ let Wrapper = require('./src/wrapper');
 module.exports = {
 	Collection: Wrapper,
 	HTML : function(data){return  Wrapper({type:'html',data:data});},
-	Wrapper: Wrapper
+	Wrapper: Wrapper,
+	NOWRAP: function(data){return {_NOWRAP:true,data:data};},
+	ProgressReporter : require('./src/progress-reporter')
 };
 
 registerFunction = Wrapper.registerFunction;
