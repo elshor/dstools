@@ -19,6 +19,7 @@ registerFunction('table',require('./src/render-table'));
 registerFunction('scatterPlot',require('./src/scatter-plot'));
 registerFunction('boxPlot',require('./src/boxplot'));
 registerFunction('histogram',require('./src/histogram'));
+registerFunction('piechart',require('./src/piechart'));
 registerFunction('corrmap',require('./src/corrmap'));
 registerFunction('groupBy',require('./src/group-by'));
 registerFunction('get',require('./src/get'));
