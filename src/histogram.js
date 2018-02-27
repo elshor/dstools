@@ -9,10 +9,13 @@ const Collection = require('..').Collection;
  * @returns {HTML}                   HTML wrapper of histogram visualization
  */
 module.exports = function(data, field,options={}){
+	let column = this.column(field)
+	.data()
+	.map((item)=>typeof item === 'number'||typeof item === 'string'?item:JSON.stringify(item));
 	return plotly.call(
 		this,
 		data,
-		[{type:'histogram',x:field}],
+		[{type:'histogram',x:column}],
 		Object.assign({title:'Histogram of ' + field,xaxis:{title:field}},options)
 		);
 };
