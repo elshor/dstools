@@ -1,6 +1,6 @@
 {
   "name": "dstools",
-  "version": "0.2.1",
+  "version": "0.2.6",
   "description": "Javascript tools and utilities for the data scientist",
   "main": "index.js",
   "scripts": {
@@ -9,13 +9,17 @@
   "author": "Elchanan Shor",
   "license": "MIT",
   "dependencies": {
+    "@runkit/value-viewer": "^1.0.0",
     "axios": "^0.17.1",
     "csv": "^2.0.0",
     "fs-extra": "^5.0.0",
     "jstat": "^1.7.1",
-	},
+    "stopwords": "0.0.9",
+    "underscore": "^1.8.3",
+    "xregexp": "^4.0.0"
+  },
   "devDependencies": {
-    "tap": "^11.0.0"
+    "tap": "^11.1.0"
   },
   "directories": {
     "test": "test"
