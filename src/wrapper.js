@@ -26,6 +26,10 @@ class Wrapper{
 		if(isPromise(data)){
 			//data is a promise - neet to wait until it resolves
 			data.then((resolved)=>this._assignData(resolved));
+			if(this._catchFunction){
+				//catch function was specified - need to attach to promise
+				data.catch(this._catchFunction);
+			}
 		}else if(isWrapper(data)){
 			//we got a wrapper - copy its data
 			this._type = data._type || this._type;
@@ -76,7 +80,8 @@ class Wrapper{
 		return typeof data === 'object'?`[Wrapper ${this.getType()}]` : data;
 	}
 	catch(callback){
-		if(typeof this._data.catch === 'function'){
+		this._catchFunction = callback;
+		if(isPromise(this._data)){
 			this._data.catch(callback);
 		}
 	}
