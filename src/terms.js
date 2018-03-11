@@ -107,7 +107,7 @@ module.exports = function(text,options){
 
 function updateCounts(text,groupBy,counts){
 	let tokens = text.match(TOKEN_REGEX);
-	
+	tokens = tokens || [];//handle situations where text is an empty string
 	//update counts
 	tokens.forEach((token)=>{
 		if(!counts[ALL][token]){
