@@ -1,6 +1,6 @@
 const Collection = require('..').Collection;
 const renderTable = require('./render-table');
-
+const guessEnv = require('./utils').guessEnv;
 /**
  * Show the wrapped data in html or plain text view. This function is used in Jupyter notebook context to display visualizations of the data. If the data is a collection, the data is displayed as an HTML table. If it is an HTML wrapper, the html is displayed. 
  * @alias show
@@ -26,12 +26,17 @@ module.exports = function(data, options={}){
 };
 
 function showHTML(html){
-	if(typeof global.$$ === 'undefined'){
-		console.info(html);
-	}else{
-		$$.html(html);
+	let env = guessEnv();
+	switch(env){
+		case 'ijavascript':
+			return $$.html(html);
+		case 'notablemind':
+			return display(html,'text/html');
+		default:
+			return console.info(html);
 	}
 }
+
 function showPlain(text){
 	console.info(text);
 }

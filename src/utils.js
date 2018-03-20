@@ -18,6 +18,7 @@ module.exports = {
  * <li>node
  * <li>ijavascript
  * <li>tap
+ * <li>notablemind - jupyter-nodejs kernel from https://github.com/notablemind/jupyter-nodejs
  * <li>runkit
  */
 function guessEnv(){
@@ -26,6 +27,9 @@ function guessEnv(){
 	}
 	if(process.env['TAP'] === '1'){
 		return 'tap';
+	}
+	if(typeof display === 'function'){
+		return 'notablemind';
 	}
 	return 'node';
 }
